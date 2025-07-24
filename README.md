@@ -1,6 +1,6 @@
 # Emotional Intelligence in Large Language Models
 
-A systematic framework for evaluating emotional intelligence capabilities in state-of-the-art Large Language Models.
+A systematic framework for evaluating emotional intelligence capabilities in state-of-the-art Large Language Models
 
 ## Abstract
 
