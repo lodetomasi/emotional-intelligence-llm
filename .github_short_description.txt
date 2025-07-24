@@ -1,0 +1,1 @@
+Comprehensive framework for evaluating emotional intelligence in LLMs through systematic testing of emotion recognition, empathy, and social awareness capabilities
