@@ -26,6 +26,13 @@ config.ini
 .DS_Store
 Thumbs.db
 
+# Temporary test files
+api_call_verification.json
+quick_test_results.json
+real_test_results.json
+real_ei_results_*.json
+example_results.json
+
 # IDE
 .vscode/
 .idea/
