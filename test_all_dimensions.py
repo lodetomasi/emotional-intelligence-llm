@@ -10,7 +10,9 @@ from datetime import datetime
 import os
 
 # Configuration - Use your API key
-API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+if not API_KEY:
+    raise ValueError("OPENROUTER_API_KEY environment variable not set")
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Models to test
@@ -200,12 +202,13 @@ def run_all_tests():
     
     # Check API key
     print(f"\n🔑 API Key status: {'✅ Found' if API_KEY and len(API_KEY) > 20 else '❌ Missing'}")
-    print(f"   Key preview: {API_KEY[:20]}...{API_KEY[-4:]}" if API_KEY and len(API_KEY) > 24 else "No key set")
+    if API_KEY and len(API_KEY) > 24:
+        # Only show first 10 chars for security
+        print(f"   Key preview: {API_KEY[:10]}...")
     
     if not API_KEY or len(API_KEY) < 20:
         print("\n⚠️  Please set your OpenRouter API key!")
-        print("Edit this file and replace 'your-api-key-here' with your actual key")
-        print("Or set environment variable: export OPENROUTER_API_KEY='your-key'")
+        print("Set environment variable: export OPENROUTER_API_KEY='your-key'")
         return
     
     results = {

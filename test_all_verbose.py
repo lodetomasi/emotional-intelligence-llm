@@ -9,7 +9,11 @@ import os
 import sys
 
 # Configuration
-API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+if not API_KEY:
+    print("❌ ERROR: OPENROUTER_API_KEY environment variable not set!")
+    print("Please set: export OPENROUTER_API_KEY='your-key'")
+    sys.exit(1)
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Tutti i modelli
@@ -171,7 +175,7 @@ def main():
     print("🧠 COMPREHENSIVE EMOTIONAL INTELLIGENCE TEST - VERBOSE MODE")
     log_separator()
     print(f"📅 Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"🔑 API Key: {API_KEY[:20]}...{API_KEY[-4:]}")
+    print(f"🔑 API Key: {'Set' if API_KEY else 'Not Set'}")
     print(f"📍 Endpoint: {API_URL}")
     print(f"🤖 Models: {len(MODELS)}")
     print(f"📝 Scenarios: {len(SCENARIOS)}")
@@ -183,7 +187,7 @@ def main():
             "test_date": datetime.now().isoformat(),
             "models": list(MODELS.keys()),
             "scenarios": list(SCENARIOS.keys()),
-            "api_key_preview": f"{API_KEY[:10]}...{API_KEY[-4:]}"
+            "api_key_preview": "configured" if API_KEY else "missing"
         },
         "results": {}
     }
