@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ei-framework"
+version = "1.0.0"
+description = "A framework for evaluating emotional intelligence in Large Language Models"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Lorenzo De Tomasi", email = "lorenzo.detomasi@graduate.univaq.it"}
+]
+keywords = ["emotional intelligence", "llm", "evaluation", "nlp", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+Homepage = "https://github.com/lodetomasi/emotional-intelligence-llm"
+Documentation = "https://github.com/lodetomasi/emotional-intelligence-llm/tree/main/docs"
+Repository = "https://github.com/lodetomasi/emotional-intelligence-llm"
+Issues = "https://github.com/lodetomasi/emotional-intelligence-llm/issues"
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v --cov=src/ei_framework --cov-report=html"
